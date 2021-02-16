@@ -19,14 +19,14 @@ public class MyController {
 	}
 	
 	@HystrixCommand(fallbackMethod = "errorshow")
-	@GetMapping("/microservice5test1")
-	public String test1() {
-		String url = "http://eureka-client-server1/";
+	@GetMapping("/microservice5test1formicroservice1")
+	public String test1() {		
+		String url = "http://localhost:9000/apigateway/microservice1/";
 		return restTemplate.getForObject(url, String.class);
 	}
 	
 	public String errorshow() {
-		return "Error catch in microservice5";
+		return "Error catch in microservice5 \n This Service is not available :- http://localhost:9000/apigateway/microservice1/";
 	}
 
 
